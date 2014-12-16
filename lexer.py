@@ -41,8 +41,11 @@ class TokType(Enum):
     LET_STMT = 285
 
 
+class Token:
 
-
+    def __init__(self, token_type, lexeme):
+        self.token_type = token_type;
+        self.lexeme = lexeme
 
 
 class Lexer:
@@ -56,9 +59,6 @@ class Lexer:
         print("Inside __init__ of Lexer");
 
  
-    def begin(self, curr_state):
-        pass
-   
     def tokenize(self, tok_type, lexeme):
         pass
 

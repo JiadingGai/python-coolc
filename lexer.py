@@ -48,6 +48,16 @@ class Token:
         self.lexeme = lexeme
 
 
+
+class Rule:
+    """Reference: http://pygments.org/docs/lexerdevelopment/"""
+    def __init__(self, tok_type, reg_expr, state = None, on_match = None)
+        self.tok_type = tok_type
+        self.reg_expr = reg_expr
+        self.state = state
+        self.on_match = on_match
+
+
 class Lexer:
     
     def __init__(self, debug=True):

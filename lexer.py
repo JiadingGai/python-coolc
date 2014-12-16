@@ -1,5 +1,14 @@
 import sys
 import re
+from enum import Enum
+
+class States(Enum):
+
+    ROOT = 1
+    COMMENT = 2
+    SL_COMMENT = 3
+    STRING = 4
+    STRING_ERR = 5
 
 class Lexer:
     

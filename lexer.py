@@ -40,10 +40,21 @@ class TokType(Enum):
     ERROR = 283
     LET_STMT = 285
 
+
+
+
+
+
 class Lexer:
     
     def __init__(self, debug=True):
-        pass
+        self.debug = debug
+        self.line_number = 0
+        self.tokens = []
+        self.curr_state = States.ROOT.name
+        self.rules = {}
+        print("Inside __init__ of Lexer");
+
  
     def begin(self, curr_state):
         pass
@@ -53,6 +64,10 @@ class Lexer:
 
     def lex(self, input_stream):
         print("inside the method 'lex' in Lexer class")
+
+
+
+
 
 if __name__ == '__main__':
     

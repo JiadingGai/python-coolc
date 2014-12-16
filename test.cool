@@ -1,0 +1,9 @@
+class A {
+    
+    var : Int <- 0;
+    
+    value() : Int {
+        var
+    };
+
+};

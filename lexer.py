@@ -50,7 +50,7 @@ class Token:
 
 class Rule:
     """Reference: http://pygments.org/docs/lexerdevelopment/"""
-    def __init__(self, tok_type, reg_expr, state = None, on_match = None)
+    def __init__(self, tok_type, reg_expr, state = None, on_match = None):
         self.tok_type = tok_type
         self.reg_expr = reg_expr
         self.state = state

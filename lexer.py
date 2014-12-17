@@ -48,7 +48,6 @@ class Token:
         self.lexeme = lexeme
 
 
-
 class Rule:
     """Reference: http://pygments.org/docs/lexerdevelopment/"""
     def __init__(self, tok_type, reg_expr, state = None, on_match = None)
@@ -70,7 +69,7 @@ class Lexer:
 
  
     def tokenize(self, tok_type, lexeme):
-        pass
+        self.tokens.append(Token(tok_type, lexeme))
 
     def lex(self, input_stream):
         print("inside the method 'lex' in Lexer class")

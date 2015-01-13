@@ -1,6 +1,6 @@
 class A {
-    
-    var : Int <- 0;
+    --This is a test, no struggle no progress.
+    let var : Int <- 0;
     
     value() : Int {
         var

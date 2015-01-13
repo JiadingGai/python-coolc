@@ -11,6 +11,12 @@ class States(Enum):
     STRING_ERR = 5
 
 class TokType(Enum):
+
+    # Not sure about these
+    THROWAWAY = -1
+    NEWLINE = 1
+    COMMENT = 3
+    MULT = '*'
     
     CLASS = 258
     ELSE = 259
@@ -64,9 +70,27 @@ class Lexer:
         self.line_number = 0
         self.tokens = []
         self.curr_state = States.ROOT.name
-        self.rules = {}
+        self.rules = {
+            States.ROOT.name: [
+                Rule(TokType.CLASS, r'(?i)class'),
+                Rule(TokType.LET, r'(?i)let'),
+                Rule(TokType.MULT, r'\n*')
+            ],
+            States.COMMENT.name: [
+                Rule(TokType.COMMENT, r'\*\)', state = States.ROOT.name),
+                Rule(TokType.NEWLINE, r'[\n]'),
+                Rule(TokType.THROWAWAY, r'.')
+            ],
+            States.SL_COMMENT.name: [
+                Rule(TokType.NEWLINE, r'[\n]', state = States.ROOT.name),
+                Rule(TokType.COMMENT, r'--'),
+                Rule(TokType.THROWAWAY, r'.') 
+            ]
+        }
         print("Inside __init__ of Lexer");
 
+    def begin(self, curr_date):
+        self.curr_state = curr_state
  
     def tokenize(self, tok_type, lexeme):
         self.tokens.append(Token(tok_type, lexeme))
@@ -83,6 +107,7 @@ if __name__ == '__main__':
     with open(sys.argv[1], 'r') as input_file:
         data = input_file.read()
     
+    debug = sys.argv[2:]
     print(data)
 
     lexer = Lexer(True)

@@ -1,0 +1,20 @@
+FAQ:
+
+1. How to install 'Enum' in Python?
+
+To install, do $ pip install enum34, installing enum (no 
+numbers) will install a completely different and incompatible version.
+
+from enum import Enum
+Animal = Enum('Animal', 'ant bee cat dog')
+or equivalently:
+
+class Animals(Enum):
+    ant = 1
+    bee = 2
+    cat = 3
+    dog = 4
+In earlier versions, one way of accomplishing enums is:
+
+def enum(**enums):
+    return type('Enum', (), enums)

@@ -1,3 +1,3 @@
 #!/bin/bash
-PYTHON=python3
+PYTHON=python
 $PYTHON lexer.py test.cool

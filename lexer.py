@@ -115,7 +115,10 @@ class Lexer:
                 regex = re.compile(rule.reg_expr)
                 match = regex.match(input_stream, input_ptr)
                 if match:
-                    if rule.tok_type and (rule.tok_type is not TokType.WHITESPACE and rule.tok_type is not TokType.THROWAWAY):
+                    if (rule.tok_type and
+                        (rule.tok_type is not TokType.WHITESPACE and 
+                         rule.tok_type is not TokType.THROWAWAY)
+                       ):
                         self.tokenize(rule.tok_type, match.group(0))
                         if rule.tok_type == TokType.NEWLINE:
                             self.line_number += 1
